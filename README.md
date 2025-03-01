@@ -1,4 +1,4 @@
-# 🏷 NameRegistry - Smart Contract
+# NameRegistry - Smart Contract
 
 Este é um **contrato inteligente Solidity** para **registrar e modificar um nome** na blockchain.  
 Apenas o **dono do contrato** pode alterar o nome, garantindo segurança e o controlo.
