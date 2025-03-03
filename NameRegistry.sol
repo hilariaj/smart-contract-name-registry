@@ -5,33 +5,33 @@ contract NameRegistry {
     string private name;
     address public owner;
 
-    // Evento para registrar mudanças de nome
+    // Event to record name changes
     event NameChanged(string oldName, string newName);
 
-    // Define o dono do contrato ao implantá-lo
+    // Defines the owner of the contract by deploying it
     constructor(){
         owner = msg.sender;
-        name = "Alice"; // Nome inicial
+        name = "Alice"; // Initial name
     }
 
-    // Modificador para restringir funções ao dono do contrato
+    // Modifier to restrict functions to the contract owner
     modifier onlyOwner(){
-        require(msg.sender == owner, "Apenas o dono pode alterar o nome.");
+        require(msg.sender == owner, "Only the owner can change the name.");
         _;
     }
 
-    // Função para definir um novo nome (somente pelo dono)
+    // Function to define a new name (owner only)
     function setName(string memory _name) public onlyOwner  {
-        emit NameChanged(name, _name); // Registra evento
+        emit NameChanged(name, _name); // Records event
         name = _name;
     }
 
-    // Função para obter o nome atual
+    // Function to obtain the current name
     function getName() public view returns (string memory) {
         return name;
     }
 
-    // Função para redefinir o nome para o valor inicial
+    // Function to redefine the name for the initial value
     function resetName() public onlyOwner {
         emit NameChanged(name, "Alice");
         name = "Alice";
